@@ -1,16 +1,16 @@
 
 # Polynomial Library
 - Math (from [AtCoder Library](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp))
-	- Pow mod
-	- Primality testing for int32
-	- Primitive root for int32
+	- Pow mod (mod int32)
+	- Primality testing (int32)
+	- Primitive root (int32)
 - DFT
 	- Radix-2 NTT
 	- Radix-2 FFT
 		- Optimization for real coefficient polynomial
 - Convolution
 	- Arithmetic type (int32, double, std::complex, ...)
-	- Modint (arbitrary mod)
+	- [Modint](https://github.com/atcoder/ac-library/blob/master/atcoder/modint.hpp) (arbitrary mod)
 		- [Convolution](https://judge.yosupo.jp/problem/convolution_mod)
 		- [Convolution (Mod 1,000,000,007)](https://judge.yosupo.jp/problem/convolution_mod_1000000007)
 - Polynomial

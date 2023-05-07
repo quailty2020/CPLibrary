@@ -1,4 +1,4 @@
-// https://judge.yosupo.jp/submission/138246
+// https://judge.yosupo.jp/submission/138264
 
 #pragma GCC optimize("Ofast")
 #include<bits/stdc++.h>
@@ -512,7 +512,7 @@ public:
             return *this = Poly();
         }
         size_t len = this->size() - b.size() + 1;
-        return (this->rev().trunc(len) *= prev(b).inv(len)).trunc(len).rev();
+        return (this->rev().trunc(len) *= prev(b).inv(len)).resize(len).rev();
     }
     Poly& operator %= (const Poly& b) {
         return *this -= *this / b * b;
@@ -642,27 +642,31 @@ using namespace polynomial;
 
 #include<atcoder/modint>
 
-typedef atcoder::modint1000000007 MINT;
+typedef atcoder::modint998244353 MINT;
 typedef Poly<MINT> POLY;
 
 int main()
 {
     int n, m;
     scanf("%d%d", &n, &m);
-    POLY a(n), b(m);
+    POLY f(n), g(m);
     for (int i = 0; i < n; ++i) {
         int t;
         scanf("%d", &t);
-        a[i] = t;
+        f[i] = t;
     }
     for (int i = 0; i < m; ++i) {
         int t;
         scanf("%d", &t);
-        b[i] = t;
+        g[i] = t;
     }
-    POLY c = (a.strip() * b.strip()).resize(n + m - 1);
-    for (int i = 0; i < n + m - 1; ++i) {
-        printf("%d%c", c[i].val(), " \n"[i + 2 == n + m]);
+    POLY q = f / g, r = f - q * g;
+    printf("%zu %zu\n", q.size(), r.size());
+    for (size_t i = 0; i < q.size(); ++i) {
+        printf("%d%c", q[i].val(), " \n"[i + 1 == q.size()]);
+    }
+    for (size_t i = 0; i < r.size(); ++i) {
+        printf("%d%c", r[i].val(), " \n"[i + 1 == r.size()]);
     }
     return 0;
 }
