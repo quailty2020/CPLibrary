@@ -1,5 +1,7 @@
-#pragma GCC optimize("Ofast")
-#include<bits/stdc++.h>
+#ifndef CPLIBRARY_POLYNOMIAL_HPP
+#define CPLIBRARY_POLYNOMIAL_HPP
+
+namespace math {
 
 template<typename T>
 constexpr T power(T a, long long b) {
@@ -11,8 +13,6 @@ constexpr T power(T a, long long b) {
     }
     return res;
 }
-
-namespace math {
 
 constexpr long long safe_mod(long long x, long long m) {
     x %= m;
@@ -200,7 +200,7 @@ private:
         if (itr == primitive_root.end()) {
             itr = primitive_root.emplace(mod, math::primitive_root_constexpr(mod)).first;
         }
-        const T w = power(T(itr->second), (mod - 1) / n);
+        const T w = math::power(T(itr->second), (mod - 1) / n);
         this->roots.resize(n);
         this->roots[n / 2] = T(1);
         for (size_t i = 1; i < n / 2; ++i) {
@@ -625,7 +625,7 @@ public:
             return Poly();
         }
         T v = (*this)[i];
-        return ((pshift(*this, -i) * Poly{T(1) / v}).log(m - i * k) * Poly{k}).exp(m - i * k).shift(i * k) * Poly{power(v, k)};
+        return ((pshift(*this, -i) * Poly{T(1) / v}).log(m - i * k) * Poly{k}).exp(m - i * k).shift(i * k) * Poly{math::power(v, k)};
     }
     Poly sqrt(size_t m) const {
         Poly x{1};
@@ -642,36 +642,4 @@ public:
 
 } // nameapace polynomial
 
-using namespace std;
-using namespace polynomial;
-
-#include<atcoder/modint>
-
-typedef atcoder::modint998244353 MINT;
-typedef Poly<MINT> POLY;
-
-int main()
-{
-    int n, m;
-    scanf("%d%d", &n, &m);
-    POLY f(n), g(m);
-    for (int i = 0; i < n; ++i) {
-        int t;
-        scanf("%d", &t);
-        f[i] = t;
-    }
-    for (int i = 0; i < m; ++i) {
-        int t;
-        scanf("%d", &t);
-        g[i] = t;
-    }
-    POLY q = f / g, r = f - q * g;
-    printf("%zu %zu\n", q.size(), r.size());
-    for (size_t i = 0; i < q.size(); ++i) {
-        printf("%d%c", q[i].val(), " \n"[i + 1 == q.size()]);
-    }
-    for (size_t i = 0; i < r.size(); ++i) {
-        printf("%d%c", r[i].val(), " \n"[i + 1 == r.size()]);
-    }
-    return 0;
-}
+#endif // CPLIBRARY_POLYNOMIAL_HPP

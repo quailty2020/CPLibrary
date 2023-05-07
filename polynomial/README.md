@@ -1,5 +1,4 @@
-
-# Polynomial Library
+# Polynomial
 - Math (from [AtCoder Library](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp))
 	- Pow mod (mod int32)
 	- Primality testing (int32)
