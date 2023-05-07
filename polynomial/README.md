@@ -1,0 +1,32 @@
+
+# Polynomial Library
+- Math (from [AtCoder Library](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp))
+	- Pow mod
+	- Primality testing for int32
+	- Primitive root for int32
+- DFT
+	- Radix-2 NTT
+	- Radix-2 FFT
+		- Optimization for real coefficient polynomial
+- Convolution
+	- Arithmetic type (int32, double, std::complex, ...)
+	- Modint (arbitrary mod)
+		- [Convolution](https://judge.yosupo.jp/problem/convolution_mod)
+		- [Convolution (Mod 1,000,000,007)](https://judge.yosupo.jp/problem/convolution_mod_1000000007)
+- Polynomial
+	- Basic Operators
+	- Advanced Operators
+		- [Inv](https://judge.yosupo.jp/problem/inv_of_formal_power_series)
+		- [Div](https://judge.yosupo.jp/problem/division_of_polynomials)
+		- [Log](https://judge.yosupo.jp/problem/log_of_formal_power_series)
+		- [Exp](https://judge.yosupo.jp/problem/exp_of_formal_power_series)
+		- [Pow](https://judge.yosupo.jp/problem/pow_of_formal_power_series)
+		- Sqrt for $a_0 = 1$
+		- TODO (or maybe not)
+			- [Sqrt](https://judge.yosupo.jp/problem/sqrt_of_formal_power_series)
+			- [Multipoint Evaluation](https://judge.yosupo.jp/problem/multipoint_evaluation)
+			- [Interpolation](https://judge.yosupo.jp/problem/polynomial_interpolation)
+			- [Berlekamp-Massey](https://judge.yosupo.jp/problem/find_linear_recurrence)
+			- [Linearly Recurrence](https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence)
+			- [Inv of Polynomials](https://judge.yosupo.jp/problem/inv_of_polynomials)
+			- [Composition](https://judge.yosupo.jp/problem/composition_of_formal_power_series)
