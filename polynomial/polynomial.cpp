@@ -1,5 +1,3 @@
-// https://judge.yosupo.jp/submission/138264
-
 #pragma GCC optimize("Ofast")
 #include<bits/stdc++.h>
 
@@ -490,6 +488,13 @@ public:
     }
 
 public:
+    T operator () (const T& x) const {
+        T y(0);
+        for (ssize_t i = this->size() - 1; i >= 0; --i) {
+            y = y * x + (*this)[i];
+        }
+        return y;
+    }
     Poly& operator += (const Poly& b) {
         this->resize(std::max(this->size(), b.size()));
         for (size_t i = 0; i < b.size(); ++i) {
