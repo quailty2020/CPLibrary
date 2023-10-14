@@ -21,9 +21,9 @@
 		- [Exp](https://judge.yosupo.jp/problem/exp_of_formal_power_series)
 		- [Pow](https://judge.yosupo.jp/problem/pow_of_formal_power_series)
 		- Sqrt for $a_0 = 1$
+		- [Multipoint Evaluation](https://judge.yosupo.jp/problem/multipoint_evaluation)
 		- TODO (or maybe not)
 			- [Sqrt](https://judge.yosupo.jp/problem/sqrt_of_formal_power_series)
-			- [Multipoint Evaluation](https://judge.yosupo.jp/problem/multipoint_evaluation)
 			- [Interpolation](https://judge.yosupo.jp/problem/polynomial_interpolation)
 			- [Berlekamp-Massey](https://judge.yosupo.jp/problem/find_linear_recurrence)
 			- [Linearly Recurrence](https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence)

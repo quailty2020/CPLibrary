@@ -638,6 +638,47 @@ public:
         x.trunc(m);
         return x;
     }
+    Poly mulT(Poly b) const {
+        if (b.size() == 0) {
+            return Poly();
+        }
+        int n = b.size();
+        std::reverse(b.begin(), b.end());
+        return ((*this) * b).shift(-(n - 1));
+    }
+    std::vector<T> eval(std::vector<T> x) const {
+        if (this->size() == 0) {
+            return std::vector<T>(x.size(), 0);
+        }
+        const int n = std::max(x.size(), this->size());
+        std::vector<Poly> q(4 * n);
+        std::vector<T> ans(x.size());
+        x.resize(n);
+        std::function<void(int, int, int)> build = [&](int p, int l, int r) {
+            if (r - l == 1) {
+                q[p] = Poly{1, -x[l]};
+            } else {
+                int m = (l + r) / 2;
+                build(2 * p, l, m);
+                build(2 * p + 1, m, r);
+                q[p] = q[2 * p] * q[2 * p + 1];
+            }
+        };
+        build(1, 0, n);
+        std::function<void(int, int, int, const Poly &)> work = [&](int p, int l, int r, const Poly &num) {
+            if (r - l == 1) {
+                if (l < int(ans.size())) {
+                    ans[l] = num[0];
+                }
+            } else {
+                int m = (l + r) / 2;
+                work(2 * p, l, m, num.mulT(q[2 * p + 1]).resize(m - l));
+                work(2 * p + 1, m, r, num.mulT(q[2 * p]).resize(r - m));
+            }
+        };
+        work(1, 0, n, mulT(q[1].inv(n)));
+        return ans;
+    }
 };
 
 } // nameapace polynomial
